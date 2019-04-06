@@ -29,7 +29,6 @@ public class DBM extends SQLiteOpenHelper {
                 DataBaseSchema.SoundsTable.COLUMN_NAME_URL + " TEXT" +
                 ")";
 
-        Log.i("Producthelper onCreate1", CREATE_SOUNDS_TABLE);
         db.execSQL(CREATE_SOUNDS_TABLE);
     }
 
