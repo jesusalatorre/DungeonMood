@@ -12,3 +12,8 @@ No further installations needed!
 
 ### Packages
 Currently, we're not using much of anything. No packages or downloads needed (as of yet)!
+
+## TODO
+- Design the track selection fragment.
+- Design the track addition fragment (the Floating Action Button should handle additions depending on context)
+
