@@ -119,13 +119,12 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_manage) {
             fragmentSwitch(new ToolsFragment());
             contextCode=4;
+            handleFAB();
         } else if (id == R.id.nav_send) {
-            Intent sendIntent = new Intent();
-            sendIntent.setAction(Intent.ACTION_SEND);
-            sendIntent.putExtra(Intent.EXTRA_TEXT, "Testing send function.");
-            sendIntent.setType("text/plain");
-            startActivity(sendIntent);
+            handleSend();
         }
+
+        handleFAB();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
@@ -141,5 +140,51 @@ public class MainActivity extends AppCompatActivity
         FragmentTransaction ft = fragmentManager.beginTransaction();
         ft.replace(R.id.fragment_container, f);
         ft.commit();
+    }
+
+    public void handleFAB(){
+        FloatingActionButton fab = findViewById(R.id.fab);
+        switch (contextCode){
+            case 1:
+                if(!fab.isShown()){
+                    fab.show();
+                }
+            case 2:
+                if(fab.isShown()){
+                    fab.hide();
+                }
+            case 3:
+                if(fab.isShown()){
+                    fab.hide();
+                }
+            case 4:
+                if(!fab.isShown()){
+                    fab.show();
+                }
+        }
+    }
+
+    public void handleSend(){
+
+        Intent sendIntent = new Intent();
+        sendIntent.setAction(Intent.ACTION_SEND);
+
+        switch (contextCode){
+            case 1:
+                sendIntent.putExtra(Intent.EXTRA_TEXT, "Music");
+                sendIntent.setType("text/plain");
+            case 2:
+                sendIntent.putExtra(Intent.EXTRA_TEXT, "Spell");
+                sendIntent.setType("text/plain");
+            case 3:
+                sendIntent.putExtra(Intent.EXTRA_TEXT, "Homebrew");
+                sendIntent.setType("text/plain");
+            case 4:
+                sendIntent.putExtra(Intent.EXTRA_TEXT, "Tools");
+                sendIntent.setType("text/plain");
+
+        }
+
+        startActivity(sendIntent);
     }
 }
