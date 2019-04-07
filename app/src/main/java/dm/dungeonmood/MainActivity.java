@@ -1,5 +1,9 @@
 package dm.dungeonmood;
 
+
+
+import android.support.v4.app.FragmentTransaction;
+import android.support.v4.app.FragmentManager;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
@@ -14,8 +18,17 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import java.net.URI;
+
+import dm.dungeonmood.Fragments.MusicSelector;
+
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, MusicSelector.OnFragmentInteractionListener {
+
+    public void onFragmentInteraction(){
+
+    }
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,12 +37,18 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+        MusicSelector fragment = new MusicSelector();
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction ft = fragmentManager.beginTransaction();
+        ft.replace(R.id.fragment_container, fragment);
+        ft.commit();
+
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 ///add a fragment for adding things depending on selected tab
-
+                handleAddition();
             }
         });
 
@@ -43,6 +62,7 @@ public class MainActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
 
         navigationView.setCheckedItem(R.id.nav_ambience);
+
     }
 
     @Override
@@ -87,6 +107,8 @@ public class MainActivity extends AppCompatActivity
 
         if (id == R.id.nav_ambience) {
 
+
+
         } else if (id == R.id.nav_spells) {
 
         } else if (id == R.id.nav_homebrew) {
@@ -94,7 +116,6 @@ public class MainActivity extends AppCompatActivity
         } else if (id == R.id.nav_manage) {
 
         } else if (id == R.id.nav_send) {
-
             Intent sendIntent = new Intent();
             sendIntent.setAction(Intent.ACTION_SEND);
             sendIntent.putExtra(Intent.EXTRA_TEXT, "Testing send function.");
@@ -105,5 +126,9 @@ public class MainActivity extends AppCompatActivity
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    public void handleAddition(){
+
     }
 }

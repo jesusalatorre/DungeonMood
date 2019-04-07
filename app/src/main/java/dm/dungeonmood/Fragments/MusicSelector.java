@@ -3,11 +3,12 @@ package dm.dungeonmood.Fragments;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
-import android.app.Fragment;
+import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import dm.dungeonmood.MainActivity;
 import dm.dungeonmood.R;
 
 /**
@@ -18,7 +19,7 @@ import dm.dungeonmood.R;
  * Use the {@link MusicSelector#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class MusicSelector extends Fragment {
+public class MusicSelector extends android.support.v4.app.Fragment {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
@@ -71,9 +72,10 @@ public class MusicSelector extends Fragment {
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
         if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
+            mListener.onFragmentInteraction();
         }
     }
+
 
     @Override
     public void onAttach(Context context) {
@@ -104,6 +106,6 @@ public class MusicSelector extends Fragment {
      */
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+        void onFragmentInteraction();
     }
 }
