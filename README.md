@@ -6,6 +6,8 @@ DungeonMood is meant to be a simple way of organizing and selecting music, ambie
 
 A basic usage scenario is opening the app, selecting a category of track (music, ambience, SFX), and picking the desired track from that category's options.
 
+Additionally, we want to quickly view spells with filter/search functionality.
+
 ## Getting Started
 Get the latest version of [Android Studio](https://developer.android.com/studio/install) and simply clone to your workspace.
 No further installations needed!
