@@ -2,8 +2,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="dm.dungeonmood.Fragments.MusicSelector"
-    android:id="@+id/musicfragment"
+    tools:context="dm.dungeonmood.Fragments.HomebrewManager"
+    android:id="@+id/homebrewfragment"
     >
 
     <!-- TODO: Update blank fragment layout -->
@@ -17,13 +17,13 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:lineSpacingExtra="12sp"
-            android:text="Music Selection Fragment"
+            android:text="Homebrew Fragment"
             android:textAlignment="center"
             android:textSize="36sp"
             android:textStyle="bold" />
 
         <Spinner
-            android:id="@+id/sound_category_spinner"
+            android:id="@+id/homebrew_category_spinner"
             android:layout_width="match_parent"
             android:layout_height="wrap_content" />
 

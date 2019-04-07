@@ -1,7 +1,6 @@
 package dm.dungeonmood;
 
-
-
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentTransaction;
 import android.support.v4.app.FragmentManager;
 import android.content.Intent;
@@ -18,12 +17,19 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import java.net.URI;
-
+import dm.dungeonmood.Fragments.HomebrewManager;
 import dm.dungeonmood.Fragments.MusicSelector;
+import dm.dungeonmood.Fragments.SpellSelector;
+import dm.dungeonmood.Fragments.ToolsFragment;
 
 public class MainActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, MusicSelector.OnFragmentInteractionListener {
+        implements NavigationView.OnNavigationItemSelectedListener,
+        MusicSelector.OnFragmentInteractionListener,
+        SpellSelector.OnFragmentInteractionListener,
+        HomebrewManager.OnFragmentInteractionListener,
+        ToolsFragment.OnFragmentInteractionListener{
+
+        int contextCode;
 
     public void onFragmentInteraction(){
 
@@ -37,11 +43,8 @@ public class MainActivity extends AppCompatActivity
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        MusicSelector fragment = new MusicSelector();
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        FragmentTransaction ft = fragmentManager.beginTransaction();
-        ft.replace(R.id.fragment_container, fragment);
-        ft.commit();
+        fragmentSwitch(new MusicSelector());
+        contextCode=1;
 
         FloatingActionButton fab = (FloatingActionButton) findViewById(R.id.fab);
         fab.setOnClickListener(new View.OnClickListener() {
@@ -80,7 +83,6 @@ public class MainActivity extends AppCompatActivity
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.main, menu);
 
-
         return true;
     }
 
@@ -106,15 +108,17 @@ public class MainActivity extends AppCompatActivity
         int id = item.getItemId();
 
         if (id == R.id.nav_ambience) {
-
-
-
+            fragmentSwitch(new MusicSelector());
+            contextCode=1;
         } else if (id == R.id.nav_spells) {
-
+            fragmentSwitch(new SpellSelector());
+            contextCode=2;
         } else if (id == R.id.nav_homebrew) {
-
+            fragmentSwitch(new HomebrewManager());
+            contextCode=3;
         } else if (id == R.id.nav_manage) {
-
+            fragmentSwitch(new ToolsFragment());
+            contextCode=4;
         } else if (id == R.id.nav_send) {
             Intent sendIntent = new Intent();
             sendIntent.setAction(Intent.ACTION_SEND);
@@ -130,5 +134,12 @@ public class MainActivity extends AppCompatActivity
 
     public void handleAddition(){
 
+    }
+
+    public void fragmentSwitch(Fragment f){
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        FragmentTransaction ft = fragmentManager.beginTransaction();
+        ft.replace(R.id.fragment_container, f);
+        ft.commit();
     }
 }
