@@ -17,3 +17,7 @@ Currently, we're not using much of anything. No packages or downloads needed (as
 - Design the track selection fragment.
 - Design the track addition fragment (the Floating Action Button should handle additions depending on context)
 
+- Design the spell selection fragment.
+
+- Design the homebrew management fragment.
+- Design the selection addition fragment (the Floating Action Button should handle additions only once a category is selected)
