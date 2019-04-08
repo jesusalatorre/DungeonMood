@@ -18,6 +18,7 @@ import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import dm.dungeonmood.Fragments.AddMusic;
 import dm.dungeonmood.Fragments.HomebrewManager;
 import dm.dungeonmood.Fragments.MusicSelector;
 import dm.dungeonmood.Fragments.SpellSelector;
@@ -26,6 +27,7 @@ import dm.dungeonmood.Fragments.ToolsFragment;
 public class MainActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener,
         MusicSelector.OnFragmentInteractionListener,
+        AddMusic.OnFragmentInteractionListener,
         SpellSelector.OnFragmentInteractionListener,
         HomebrewManager.OnFragmentInteractionListener,
         ToolsFragment.OnFragmentInteractionListener{
@@ -134,6 +136,16 @@ public class MainActivity extends AppCompatActivity
 
     public void handleAddition(){
 
+        switch (contextCode){
+            case 1:
+                fragmentSwitch(new AddMusic());
+                contextCode=11;
+                break;
+            case 4:
+                contextCode=41;
+                break;
+        }
+        handleFAB();
     }
 
     public void fragmentSwitch(Fragment f){
@@ -185,6 +197,9 @@ public class MainActivity extends AppCompatActivity
                 break;
             case 4:
                 fab.show();
+                break;
+            case 11:
+                fab.hide();
                 break;
         }
     }

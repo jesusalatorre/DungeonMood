@@ -5,11 +5,13 @@ package dm.dungeonmood.Models;
  */
 
 public class Sound {
+    public String category;
     public String title;
     public String details;
     public String url;
 
-    public Sound(String t, String d, String u) {
+    public Sound(String c, String t, String d, String u) {
+        category = c;
         title = t;
         details = d;
         url = u;

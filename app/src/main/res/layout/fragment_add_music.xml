@@ -1,0 +1,57 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="dm.dungeonmood.Fragments.AddMusic">
+
+    <!-- TODO: Update blank fragment layout -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:layout_marginTop="10dp"
+        android:layout_marginEnd="20dp"
+        >
+
+
+        <EditText
+            android:id="@+id/CategoryInput"
+            style="@style/Widget.AppCompat.EditText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="Type of track"
+            android:hint="Ambience"
+            android:inputType="text"
+            android:singleLine="true"
+            android:textAlignment="textEnd" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Category"
+                android:textAlignment="viewStart"
+                android:textStyle="bold" />
+
+
+        <EditText
+            android:id="@+id/NameInput"
+            style="@style/Widget.AppCompat.EditText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:contentDescription="The track's name"
+            android:hint="Generic Witcher Combat 3"
+            android:inputType="text"
+            android:singleLine="true"
+            android:textAlignment="textEnd" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Title"
+            android:textAlignment="viewStart"
+            android:textStyle="bold" />
+
+
+    </LinearLayout>
+
+</FrameLayout>
