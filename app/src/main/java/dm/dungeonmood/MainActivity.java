@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
+import android.util.Log;
 import android.view.View;
 import android.support.design.widget.NavigationView;
 import android.support.v4.view.GravityCompat;
@@ -106,28 +107,25 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
-        FloatingActionButton fab = findViewById(R.id.fab);
 
         if (id == R.id.nav_ambience) {
             fragmentSwitch(new MusicSelector());
             contextCode=1;
-            fab.show();
         } else if (id == R.id.nav_spells) {
             fragmentSwitch(new SpellSelector());
             contextCode=2;
-            fab.hide();
         } else if (id == R.id.nav_homebrew) {
             fragmentSwitch(new HomebrewManager());
             contextCode=3;
-            fab.hide();
         } else if (id == R.id.nav_manage) {
             fragmentSwitch(new ToolsFragment());
             contextCode=4;
-            fab.show();
-
         } else if (id == R.id.nav_send) {
             handleSend();
         }
+
+        logContextCode();
+        handleFAB();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
@@ -147,30 +145,51 @@ public class MainActivity extends AppCompatActivity
 
 
     public void handleSend(){
-
         Intent sendIntent = new Intent();
         sendIntent.setAction(Intent.ACTION_SEND);
+        String message;
 
         switch (contextCode){
             case 1:
-                sendIntent.putExtra(Intent.EXTRA_TEXT, "Music");
-                sendIntent.setType("text/plain");
+                message = "Hello from music";
+                sendIntent.putExtra(Intent.EXTRA_TEXT, message);
+                break;
             case 2:
-                sendIntent.putExtra(Intent.EXTRA_TEXT, "Spell");
-                sendIntent.setType("text/plain");
+                message = "Hello from spells";
+                sendIntent.putExtra(Intent.EXTRA_TEXT, message);
+                break;
             case 3:
-                sendIntent.putExtra(Intent.EXTRA_TEXT, "Homebrew");
-                sendIntent.setType("text/plain");
+                message = "Hello from homebrew";
+                sendIntent.putExtra(Intent.EXTRA_TEXT, message);
+                break;
             case 4:
-                sendIntent.putExtra(Intent.EXTRA_TEXT, "Tools");
-                sendIntent.setType("text/plain");
-
+                message = "Hello from tools";
+                sendIntent.putExtra(Intent.EXTRA_TEXT, message);
+                break;
         }
-
+        sendIntent.setType("text/plain");
         startActivity(sendIntent);
     }
 
-    public void getContextCode(){
+    public void handleFAB(){
+        FloatingActionButton fab = findViewById(R.id.fab);
+        switch (contextCode){
+            case 1:
+                fab.show();
+                break;
+            case 2:
+                fab.hide();
+                break;
+            case 3:
+                fab.hide();
+                break;
+            case 4:
+                fab.show();
+                break;
+        }
+    }
 
+    public void logContextCode(){
+        Log.d("eh", String.valueOf(contextCode));
     }
 }
