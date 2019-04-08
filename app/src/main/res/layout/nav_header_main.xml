@@ -26,5 +26,4 @@
         android:paddingTop="@dimen/nav_header_vertical_spacing"
         android:text='"What are you buying? What are you selling?"'
         android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
-
 </LinearLayout>

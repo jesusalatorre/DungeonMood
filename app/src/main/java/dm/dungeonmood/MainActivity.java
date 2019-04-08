@@ -106,25 +106,28 @@ public class MainActivity extends AppCompatActivity
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
+        FloatingActionButton fab = findViewById(R.id.fab);
 
         if (id == R.id.nav_ambience) {
             fragmentSwitch(new MusicSelector());
             contextCode=1;
+            fab.show();
         } else if (id == R.id.nav_spells) {
             fragmentSwitch(new SpellSelector());
             contextCode=2;
+            fab.hide();
         } else if (id == R.id.nav_homebrew) {
             fragmentSwitch(new HomebrewManager());
             contextCode=3;
+            fab.hide();
         } else if (id == R.id.nav_manage) {
             fragmentSwitch(new ToolsFragment());
             contextCode=4;
-            handleFAB();
+            fab.show();
+
         } else if (id == R.id.nav_send) {
             handleSend();
         }
-
-        handleFAB();
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
@@ -142,27 +145,6 @@ public class MainActivity extends AppCompatActivity
         ft.commit();
     }
 
-    public void handleFAB(){
-        FloatingActionButton fab = findViewById(R.id.fab);
-        switch (contextCode){
-            case 1:
-                if(!fab.isShown()){
-                    fab.show();
-                }
-            case 2:
-                if(fab.isShown()){
-                    fab.hide();
-                }
-            case 3:
-                if(fab.isShown()){
-                    fab.hide();
-                }
-            case 4:
-                if(!fab.isShown()){
-                    fab.show();
-                }
-        }
-    }
 
     public void handleSend(){
 
@@ -186,5 +168,9 @@ public class MainActivity extends AppCompatActivity
         }
 
         startActivity(sendIntent);
+    }
+
+    public void getContextCode(){
+
     }
 }
