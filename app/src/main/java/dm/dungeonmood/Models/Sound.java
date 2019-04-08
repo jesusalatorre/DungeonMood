@@ -1,4 +1,4 @@
-package dm.dungeonmood;
+package dm.dungeonmood.Models;
 
 /**
  * Created by Jesus on 4/5/2019.
