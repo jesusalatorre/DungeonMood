@@ -178,6 +178,10 @@ public class MainActivity extends AppCompatActivity
                 message = "Hello from tools";
                 sendIntent.putExtra(Intent.EXTRA_TEXT, message);
                 break;
+            case 11:
+                message = "Hello from a specific song";
+                sendIntent.putExtra(Intent.EXTRA_TEXT, message);
+                break;
         }
         sendIntent.setType("text/plain");
         startActivity(sendIntent);
